@@ -1,0 +1,2 @@
+# This extension currently has no third-party Python dependencies.
+# ComfyUI supplies the `comfy_api` package at runtime.
