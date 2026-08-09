@@ -45,10 +45,14 @@ python - <<'PY'
 import json
 from urllib.request import urlopen
 
-with urlopen("http://127.0.0.1:8188/object_info/ComfyUILoraLoaderHelloWorld") as response:
-    node = json.load(response)["ComfyUILoraLoaderHelloWorld"]
+with urlopen("http://127.0.0.1:8188/object_info/ComfyUILoraLoaderMultiLoraLoader") as response:
+    node = json.load(response)["ComfyUILoraLoaderMultiLoraLoader"]
 
-assert node["display_name"] == "Hello World", node
-assert "name" in node["input"]["required"], node
-print("Smoke test passed: ComfyUILoraLoaderHelloWorld loaded by ComfyUI.")
+assert node["display_name"] == "Multi Lora Loader", node
+assert "model" in node["input"]["required"], node
+assert "loras" not in node["input"]["required"], node
+assert "clip" in node["input"]["optional"], node
+with urlopen("http://127.0.0.1:8188/multi-lora-loader/loras") as response:
+    assert isinstance(json.load(response), list)
+print("Smoke test passed: Multi Lora Loader loaded by ComfyUI.")
 PY

@@ -7,7 +7,11 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends git \
+    && apt-get install -y --no-install-recommends \
+    git \
+    libx11-6 \
+    libxext6 \
+    libxcb1 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN --mount=type=cache,id=comfyui-pip,target=/root/.cache/pip \

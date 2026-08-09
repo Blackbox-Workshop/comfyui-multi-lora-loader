@@ -1,11 +1,9 @@
 services:
-  smoke:
+  comfyui:
     image: comfyui-cpu-testing
     build:
       context: .
-      args:
-        COMFYUI_REF: master
     volumes:
-      # Mount the source under the same name users will install.
       - ./:/app/custom_nodes/comfyui-lora-loader
-    command: ["sh", "/app/custom_nodes/comfyui-lora-loader/scripts/smoke-test.sh"]
+    ports:
+      - 8188:8188

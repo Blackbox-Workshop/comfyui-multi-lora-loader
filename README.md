@@ -1,21 +1,17 @@
 # ComfyUI LoRA Loader
 
 A Nodes 2.0-native ComfyUI custom node for applying a configurable list of
-LoRAs from one node. This repository currently contains only the initial
-extension scaffold and a `Hello World` smoke-test node.
+LoRAs from one node. **Multi Lora Loader** lets you add, order, enable/disable,
+and independently set model and CLIP strengths for any number of LoRAs.
 
 ## Install for development
 
 Clone this directory into `ComfyUI/custom_nodes/`, then restart ComfyUI. Add
-**LoRA Loader → Hello World** to a workflow and run it to verify discovery.
+**LoRA Loader → Multi Lora Loader** to a workflow. Connect a model (and
+optionally a CLIP), then use **Add LoRA** to build the ordered list.
 
-## Documentation
+## CPU-only Docker development
 
-- [ComfyUI custom-node overview](https://docs.comfy.org/custom-nodes/overview)
-- [Getting-started walkthrough](https://docs.comfy.org/custom-nodes/walkthrough)
-- [JavaScript extensions](https://docs.comfy.org/custom-nodes/js/javascript_overview)
-- [Official example node](https://github.com/Comfy-Org/ComfyUI/blob/master/custom_nodes/example_node.py.example)
-- [ComfyUI custom-node skills](https://github.com/Comfy-Org/comfyui-custom-node-skills) — an agent-oriented reference covering V3 and V1 APIs.
-
-The local `reference/rgthree-comfy/` checkout is excluded from version control
-and is for behavioral research only.
+Docker is intended for extension loading and API/UI checks, not image
+generation performance. It mounts this working tree into a current ComfyUI
+installation, so source edits only require a service restart.

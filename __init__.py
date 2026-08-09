@@ -1,8 +1,14 @@
 """ComfyUI extension entry point for ComfyUI LoRA Loader."""
 
-from .nodes.hello_world import HelloWorldExtension
+from .nodes.multi_lora_loader import MultiLoraLoaderExtension
 
 
-async def comfy_entrypoint() -> HelloWorldExtension:
+WEB_DIRECTORY = "./web"
+
+
+async def comfy_entrypoint() -> MultiLoraLoaderExtension:
     """Return the extension loaded by current ComfyUI releases."""
-    return HelloWorldExtension()
+    return MultiLoraLoaderExtension()
+
+
+__all__ = ["WEB_DIRECTORY", "comfy_entrypoint"]

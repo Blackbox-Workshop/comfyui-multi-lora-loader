@@ -10,7 +10,7 @@ to a supplied `MODEL` and optional `CLIP`.
 - Add and remove LoRA rows in the node UI.
 - Choose a LoRA from ComfyUI's `loras` model directory.
 - Toggle each row on or off without deleting it.
-- Set a strength per row, with optional separate model and CLIP strengths.
+- Set one strength per row, applied to both the model and CLIP.
 - Apply enabled LoRAs in their displayed order.
 - Pass through `MODEL` and `CLIP` unchanged when no enabled LoRA applies.
 - Save and restore all row data in normal ComfyUI workflows and API workflows.
@@ -37,6 +37,6 @@ to a supplied `MODEL` and optional `CLIP`.
    order and strengths.
 2. Disabling a row prevents it from being applied.
 3. Reloading a saved workflow restores row order, selection, toggle state, and
-   both strengths.
+   strength.
 4. A workflow submitted through the API executes with the same serialized row
    data as the UI workflow.
