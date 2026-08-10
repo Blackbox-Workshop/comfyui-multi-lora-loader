@@ -4,8 +4,6 @@
 
 - Keep backend code in `nodes/` and frontend code in `web/`.
 - Prefer ComfyUI's current V3 (`comfy_api.latest`) API for new code.
-- Do not copy rgthree source. Treat `reference/rgthree-comfy/` as behavioral
-  research only; implement this project independently.
 - Preserve workflow serialization when changing frontend widgets.
 - Keep the first release focused on multi-LoRA selection, enable/disable, and
   one shared strength per LoRA. Metadata is explicitly out of scope.
