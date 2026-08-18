@@ -8,6 +8,10 @@ function defaultRow() {
   return { enabled: true, lora: "", strength: 1 };
 }
 
+function displayLoraName(name) {
+  return name.replace(/\.safetensors$/i, "");
+}
+
 function parseRows(value) {
   try {
     const rows = typeof value === "string" ? JSON.parse(value) : value;
@@ -89,12 +93,13 @@ function createLoraPicker({ getLoras, getValue, setValue }) {
   };
   const updateButton = () => {
     const value = getValue();
+    const displayValue = displayLoraName(value);
     const label = document.createElement("span");
     label.className = "multi-lora-loader__picker-label min-w-[4ch] flex-1 truncate pr-1 pl-2 text-left text-xs";
-    label.textContent = value || (getLoras().length ? "Select a LoRA…" : "No LoRAs found");
+    label.textContent = displayValue || (getLoras().length ? "Select a LoRA…" : "No LoRAs found");
     trigger.replaceChildren(label);
     picker.classList.toggle("is-placeholder", !value);
-    trigger.title = value || "Select a LoRA";
+    trigger.title = displayValue || "Select a LoRA";
   };
   const positionMenu = () => {
     if (!menu) return;
@@ -128,7 +133,7 @@ function createLoraPicker({ getLoras, getValue, setValue }) {
       option.setAttribute("role", "option");
       option.setAttribute("aria-selected", String(name === getValue()));
       option.classList.toggle("is-active", index === activeIndex);
-      option.textContent = name;
+      option.textContent = displayLoraName(name);
       if (name === getValue()) {
         const check = document.createElement("span");
         check.className = "multi-lora-loader__picker-check";
